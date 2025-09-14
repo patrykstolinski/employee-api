@@ -26,6 +26,7 @@ def create_employee(db: Session, employee: EmployeeCreate):
         db.add(db_employee)
         db.commit()
         db.refresh(db_employee)
+        return db_employee
     except IntegrityError:
         db.rollback()
         raise ValueError("Fehler beim speichern")
